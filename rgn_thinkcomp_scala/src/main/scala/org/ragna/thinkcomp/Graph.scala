@@ -47,6 +47,12 @@ class Graph {
     (this.v(w)) += (v -> e)
   }
 
+  /**
+   * Get edge object by both vertex searching in vertices map v
+   * @param vx1
+   * @param vx2
+   * @return Edge object
+   */
   def get_edge(vx1: Vertex, vx2: Vertex): Edge = {
     this.v.foreach {
       case (k, v) =>
@@ -87,12 +93,12 @@ class Graph {
     ret ++= this.v.keySet
     ret
   }
-  
+
   def edges(): List[Edge] = {
     var eSet = Set[Edge]()
     var ret = List[Edge]()
-    this.v.values.foreach{
-      case innerVals => 
+    this.v.values.foreach {
+      case innerVals =>
         eSet ++= innerVals.values
     }
     ret ++= eSet
@@ -104,22 +110,27 @@ class Graph {
   }
 }
 
+/**
+ * Vertex for a graph modeled with a simple label
+ * @author ragnarokkrr
+ *
+ */
 class Vertex(var label: String = "") extends Equals {
   override def toString(): String = {
     String.format("Vertex('%s')", label)
   }
-  
+
   def canEqual(other: Any) = {
-    other.isInstanceOf[org.ragna.thinkcomp.Vertex]
+    other.isInstanceOf[Vertex]
   }
-  
+
   override def equals(other: Any) = {
     other match {
-      case that: org.ragna.thinkcomp.Vertex => that.canEqual(Vertex.this) && label == that.label
+      case that: Vertex => that.canEqual(Vertex.this) && label == that.label
       case _ => false
     }
   }
-  
+
   override def hashCode() = {
     val prime = 41
     prime + label.hashCode
@@ -130,27 +141,30 @@ class Edge(val e1: Vertex, val e2: Vertex) extends Equals {
   override def toString(): String = {
     String.format("Edge(%s,%s)", e1, e2)
   }
-  
+
   def canEqual(other: Any) = {
     other.isInstanceOf[org.ragna.thinkcomp.Edge]
   }
-  
+
   override def equals(other: Any) = {
     other match {
       case that: org.ragna.thinkcomp.Edge => that.canEqual(Edge.this) && e1 == that.e1 && e2 == that.e2
       case _ => false
     }
   }
-  
+
   override def hashCode() = {
     val prime = 41
     prime * (prime + e1.hashCode) + e2.hashCode
   }
-  
-  
-  
+
 }
 
+/**
+ * Companion object
+ * @author ragnarokkrr
+ *
+ */
 object Graph {
 
   def main(args: Array[String]) {

@@ -7,7 +7,7 @@ import org.junit.runner._
 import org.scalatest.matchers.ShouldMatchers
 
 @RunWith(classOf[JUnitRunner])
-class GraphTest extends FeatureSpec with GivenWhenThen with ShouldMatchers {
+class GraphFeatureSpecTest extends FeatureSpec with GivenWhenThen with ShouldMatchers {
 
   feature("The user can define Vertices and Edges in Graph") {
     info("As a programmer ")

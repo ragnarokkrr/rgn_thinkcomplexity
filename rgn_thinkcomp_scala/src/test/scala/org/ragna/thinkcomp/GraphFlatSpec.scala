@@ -7,7 +7,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class GraphSpec extends FlatSpec with GivenWhenThen with ShouldMatchers {
+class GraphFlatSpec extends FlatSpec with GivenWhenThen with ShouldMatchers {
 
   def fixtureVWY = new {
     val v = new Vertex("v")
