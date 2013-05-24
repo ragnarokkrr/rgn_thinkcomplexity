@@ -46,6 +46,8 @@ class GraphFeatureSpecTest extends FeatureSpec with GivenWhenThen with ShouldMat
 
       when("when get_edge(v, y) is invoked on the graph")
       val result = g.get_edge(v, y)
+      
+      //must do then
 
     }
   }
