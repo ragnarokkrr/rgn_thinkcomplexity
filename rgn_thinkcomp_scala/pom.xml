@@ -26,6 +26,18 @@
 		<scala.version>2.9.2</scala.version>
 	</properties>
 
+	<repositories>
+		<!-- https://code.google.com/p/renjin/ -->
+		<repository>
+			<id>bedatadriven</id>
+			<name>Bedatadriven Public REpo</name>
+			<url>http://nexus.bedatadriven.com/content/groups/public/</url>
+		</repository>
+
+
+	</repositories>
+
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>scala-tools.org</id>
@@ -56,7 +68,7 @@
 			<version>1.10.1</version>
 			<scope>test</scope>
 		</dependency>
-            
+
 		<!-- <dependency> <groupId>org.scala-tools.testing</groupId> <artifactId>specs_${scala.version}</artifactId> 
 			<version>1.12.4</version> <scope>test</scope> </dependency> -->
 
@@ -66,12 +78,23 @@
 			<version>1.12.4</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest</artifactId>
-			<version>1.2</version>
+			<artifactId>scalatest_${scala.version}</artifactId>
+			<version>1.9.1</version>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>jgraph</groupId>
+			<artifactId>jgraph</artifactId>
+			<version>5.13.0.0</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.renjin</groupId> <artifactId>renjin-core</artifactId> 
+			<version>0.6.8-SNAPSHOT</version> </dependency> -->
 	</dependencies>
 
 	<build>
