@@ -18,6 +18,8 @@ class GraphFlatSpec extends FlatSpec with GivenWhenThen with ShouldMatchers {
     val e2 = new Edge(w, y)
 
     val g = new Graph(List(v, w, y), List(e1, e2))
+
+    val lg = List((v, w), (w, y))
   }
 
   "A Graph" should " return an edge when a valid edge is asked " in {
@@ -51,35 +53,61 @@ class GraphFlatSpec extends FlatSpec with GivenWhenThen with ShouldMatchers {
     then("a new call get_edge(v, w) shoul be null")
     f.g.get_edge(f.v, f.w) should be(null)
     and("returned edge must refer to requested vertices")
-    result.e1 should ( equal (f.v) or equal (f.w))
-    result.e2 should ( equal (f.v) or equal (f.w))
-    
-    println (result)
+    result.e1 should (equal(f.v) or equal(f.w))
+    result.e2 should (equal(f.v) or equal(f.w))
+
+    println(result)
     println(f.g)
   }
-  
+
   it should "return a set of vertices when asked for" in {
     given("A Graph with 3 vertices (v,w,y) and 2 edges ((v,w), (w,y))")
     val f = fixtureVWY
 
     when("vertices is invoked ")
     val result = f.g.vertices
-    
+
     then("a set of vertices should be returned")
-    result should be (List(new Vertex("v"), new Vertex("w"), new Vertex("y")) )
+    result should be(List(new Vertex("v"), new Vertex("w"), new Vertex("y")))
   }
 
-   it should "return a set of edges when asked for" in {
+  it should "return a set of edges when asked for" in {
     given("A Graph with 3 vertices (v,w,y) and 2 edges ((v,w), (w,y))")
     val f = fixtureVWY
 
     when("edges is invoked ")
     val result = f.g.edges
-    
+
     then("a set of edges should be returned")
-    result should be (List(f.e1, f.e2) )
+    result should be(List(f.e1, f.e2))
   }
- 
-  
-  
+
+  "A Vertex from a Graph" should " return a list of adjacent vertices when asked for" in {
+    given("A Vertex  W")
+    val f = fixtureVWY
+
+    when("out_vertices is called")
+    val result = f.g.out_vertices(f.w)
+
+    then("a list of adjacent vertices v,y should be returned ")
+
+    result should be(List(f.v, f.y))
+
+  }
+
+  it should "return a list of edges when asked for" in {
+
+    given("A Vertex  W")
+    val f = fixtureVWY
+
+    when("out_edges is called")
+    val result = f.g.out_vertices(f.w)
+
+    then("a list of adjacent vertices v,y should be returned ")
+
+    println(result)
+    result should be(List(f.v, f.y))
+
+  }
+
 }

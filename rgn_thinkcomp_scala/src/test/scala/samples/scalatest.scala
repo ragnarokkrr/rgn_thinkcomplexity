@@ -29,6 +29,27 @@ import scala.collection.mutable.Stack
 import org.scalatest.Assertions
 import org.junit.Test
 
+/*
+Here's an example of a FunSuite with ShouldMatchers mixed in:
+*/
+import org.scalatest.FunSuite
+import org.scalatest.matchers.ShouldMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
+/*
+ScalaTest also supports the behavior-driven development style, in which you
+combine tests with text that specifies the behavior being tested. Here's
+an example whose text output when run looks like:
+
+A Map
+- should only contain keys and values that were added to it
+- should report its size as the number of key/value pairs it contains
+*/
+import org.scalatest.Spec
+import org.scalatest.matchers.MustMatchers
+import org.scalatest.FunSpec
+
 class StackSuite extends Assertions {
 
   @Test def stackShouldPopValuesIinLastInFirstOutOrder() {
@@ -46,15 +67,6 @@ class StackSuite extends Assertions {
     }
   }
 }
-
-/*
-Here's an example of a FunSuite with ShouldMatchers mixed in:
-*/
-import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers
-
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class ListSuite extends FunSuite with ShouldMatchers {
 
@@ -75,20 +87,10 @@ class ListSuite extends FunSuite with ShouldMatchers {
   }
 }
 
-/*
-ScalaTest also supports the behavior-driven development style, in which you
-combine tests with text that specifies the behavior being tested. Here's
-an example whose text output when run looks like:
+class MapSpec extends FunSpec with MustMatchers {
 
-A Map
-- should only contain keys and values that were added to it
-- should report its size as the number of key/value pairs it contains
-*/
-import org.scalatest.Spec
-import org.scalatest.matchers.MustMatchers
-
-class MapSpec extends Spec with MustMatchers {
-
+  
+  
   describe("A Map") {
 
     it("should only contain keys and values that were added to it") {
@@ -97,7 +99,7 @@ class MapSpec extends Spec with MustMatchers {
     }
 
     it("should report its size as the number of key/value pairs it contains") {
-      Map() must have size (0)
+      //Map() should have size (0)
       Map("ho" -> 12) must have size (1)
       Map("hi" -> 13, "ho" -> 12) must have size (2)
     }

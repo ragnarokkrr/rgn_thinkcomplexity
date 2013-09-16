@@ -47,6 +47,21 @@ class Graph {
     (this.v(w)) += (v -> e)
   }
 
+  def add_all_edges(v_pairs: List[(Vertex, Vertex)]) {
+
+    if (this.v.size > 0) throw new GraphException
+    var vertices = Set[Vertex]()
+    v_pairs.foreach { vp =>
+      vertices += vp._1
+      vertices += vp._2
+    }
+    vertices.foreach { vx => add_vertex(vx) }
+
+    v_pairs.foreach { vp =>
+      add_edge(new Edge(vp._1, vp._2))
+    }
+  }
+
   /**
    * Get edge object by both vertex searching in vertices map v
    * @param vx1
@@ -96,19 +111,34 @@ class Graph {
 
   def edges(): List[Edge] = {
     var eSet = Set[Edge]()
-    var ret = List[Edge]()
     this.v.values.foreach {
       case innerVals =>
         eSet ++= innerVals.values
     }
-    ret ++= eSet
-    ret
+
+    eSet.toList
+  }
+
+  def out_vertices(vx: Vertex): List[Vertex] = {
+    val v = (this.v(vx))
+    v.keySet.toList
+  }
+
+  def out_edges(vx: Vertex): List[Edge] = {
+    val v = (this.v(vx))
+    v.values.toSet.toList
   }
 
   override def toString(): String = {
     String.format("Graph(%s)", v)
   }
 }
+
+/**
+ * @author Nilseu Padilha	ragnarokkrr.blog@gmail.com
+ *
+ */
+class GraphException extends Exception
 
 /**
  * Vertex for a graph modeled with a simple label
@@ -136,6 +166,7 @@ class Vertex(var label: String = "") extends Equals {
     prime + label.hashCode
   }
 }
+
 
 class Edge(val e1: Vertex, val e2: Vertex) extends Equals {
   override def toString(): String = {
