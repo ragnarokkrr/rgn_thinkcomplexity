@@ -23,8 +23,8 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<encoding>UTF-8</encoding>
-		<scala.version>2.10</scala.version>
-		<scala.rel.version>2.10.2</scala.rel.version>
+		<scala.version>2.11.1</scala.version>
+		<scala.rel.version>2.11.1</scala.rel.version>
 	</properties>
 <!-- 
 	<pluginRepositories>
@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
-			<version>${scala.rel.version}</version>
+			<version>${scala.version}</version>
 		</dependency>
 
 		<!-- Test -->
@@ -51,27 +51,14 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.scalacheck</groupId>
-			<artifactId>scalacheck_${scala.version}</artifactId>
-			<version>1.10.1</version>
-			<scope>test</scope>
-		</dependency>
- 
-		<!-- <dependency> <groupId>org.scala-tools.testing</groupId> <artifactId>specs_${scala.rel.version}</artifactId> 
-			<version>1.12.4</version> <scope>test</scope> </dependency> -->
-
-		<dependency>
 			<groupId>org.specs2</groupId>
-			<artifactId>specs2_${scala.version}</artifactId>
-			<version>2.2</version>
+			<artifactId>specs2_2.11</artifactId>
+			<version>2.3.13</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_${scala.version}</artifactId>
-			<version>2.0.M6</version>
-			<scope>test</scope>
+			<artifactId>scalatest_2.11</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 
 		<dependency>
@@ -150,9 +137,7 @@
 										<artifactId>
 											maven-scala-plugin
 										</artifactId>
-										<versionRange>
-											[2.15.2,)
-										</versionRange>
+										<versionRange>[2.15.0,)</versionRange>
 										<goals>
 											<goal>compile</goal>
 											<goal>testCompile</goal>
